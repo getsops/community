@@ -12,12 +12,15 @@ permissions:
 
 jobs:
   labels:
+    name: Run sync
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: EndBug/label-sync@da00f2c11fdb78e4fae44adac2fdd713778ea3e8 # v2.3.2
         with:
           # Configuration file
-          config-file: .github/labels.yaml
+          # NB: URL as a workaround for https://github.com/EndBug/label-sync/issues/204
+          config-file: https://raw.githubusercontent.com/getsops/community/main/.github/labels.yaml
           # Strictly declarative
           delete-other-labels: true
