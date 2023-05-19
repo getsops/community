@@ -1,0 +1,23 @@
+name: Sync labels
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/labels.yaml
+
+permissions:
+  issues: write
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: EndBug/label-sync@da00f2c11fdb78e4fae44adac2fdd713778ea3e8 # v2.3.2
+        with:
+          # Configuration file
+          config-file: .github/labels.yaml
+          # Strictly declarative
+          delete-other-labels: true
